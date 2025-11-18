@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TokenSwap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <header>
+        <p class="eyebrow">Swap Desk</p>
+        <h1>Trade tokens with confidence</h1>
+        <p class="lede">Live quotes, instant validation, beautiful UX. Powered by interview.switcheo.com.</p>
+      </header>
+
+      <article class="swap-card" aria-live="polite">
+        <div class="card-header">
+          <div>
+            <p class="eyebrow">Live quote</p>
+            <h2>Currency swap</h2>
+          </div>
+          <span id="connection-status" class="badge badge--ghost">Loading prices…</span>
+        </div>
+
+        <form id="swap-form" novalidate>
+          <div class="field-group">
+            <label for="from-amount">Amount to send</label>
+            <div class="input-row">
+              <input id="from-amount" name="fromAmount" type="number" min="0" step="0.0001" placeholder="0.0" />
+              <div class="token-selector">
+                <img id="from-token-icon" alt="" />
+                <select id="from-token" name="fromToken"></select>
+              </div>
+            </div>
+            <div class="sub-row">
+              <p id="from-token-price" class="token-price">—</p>
+              <button type="button" class="ghost-link" id="fill-max">Max</button>
+            </div>
+          </div>
+
+          <button type="button" class="circle-btn" id="swap-direction" aria-label="Swap direction">⇅</button>
+
+          <div class="field-group">
+            <label for="to-amount">Amount to receive</label>
+            <div class="input-row readonly">
+              <input id="to-amount" name="toAmount" type="text" readonly placeholder="0.0" />
+              <div class="token-selector">
+                <img id="to-token-icon" alt="" />
+                <select id="to-token" name="toToken"></select>
+              </div>
+            </div>
+            <p id="to-token-price" class="token-price">—</p>
+          </div>
+
+          <div class="summary">
+            <div>
+              <p class="summary-label">Quote</p>
+              <p id="quote-details" class="summary-value">Enter an amount to preview the trade.</p>
+            </div>
+            <div>
+              <p class="summary-label">Fees</p>
+              <p class="summary-value">0.10% (est.)</p>
+            </div>
+          </div>
+
+          <p id="form-feedback" class="feedback" role="alert"></p>
+
+          <button id="submit-btn" type="submit" class="cta">
+            <span class="cta__label">Confirm swap</span>
+            <span class="cta__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+      </article>
+    </section>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
